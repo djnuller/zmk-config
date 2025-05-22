@@ -14,22 +14,35 @@
         screen_shot: screen_shot {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_COMMAND &kp LEFT_SHIFT &kp NUMBER_4>;
+            bindings = <
+                &macro_press &kp LEFT_COMMAND
+                &macro_press &kp LEFT_SHIFT
+                &macro_tap &kp NUMBER_4
+                &macro_release &kp LEFT_SHIFT
+                &macro_release &kp LEFT_COMMAND
+            >;
             label = "SCREEN_SHOT";
         };
+    
         less_than: less_than {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp NON_US_BACKSLASH>;
+            bindings = <&macro_tap &kp NON_US_BACKSLASH>;
             label = "LESS_THAN";
         };
+    
         greater_than: greater_than {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LSHFT &kp NON_US_BACKSLASH>;
+            bindings = <
+                &macro_press &kp LEFT_SHIFT
+                &macro_tap &kp NON_US_BACKSLASH
+                &macro_release &kp LEFT_SHIFT
+            >;
             label = "GREATER_THAN";
         };
     };
+
 
     keymap {
         compatible = "zmk,keymap";
